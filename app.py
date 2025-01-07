@@ -10,6 +10,7 @@ st.title("📊 Simulateur d'investissement basé sur un actif")
 # Dictionnaire des actifs avec leurs tickers
 actifs = {
     "Or (Gold Spot USD)": "GC=F",
+    "MSCI World (ETF)": "CW8.PA",
     "S&P 500 (ETF)": "SPY",
     "Nasdaq 100 (ETF)": "QQQ",
     "Dow Jones (ETF)": "DIA",
