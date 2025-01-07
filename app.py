@@ -91,17 +91,29 @@ else:
     elif periode_rapide == "10 ans":
         date_debut = date_fin - timedelta(days=3650)
 
-# Récupération des données historiques
 def recuperer_donnees(actif, date_debut, date_fin):
-    # Récupérer le ticker correspondant à l'actif choisi
-    ticker = actifs.get(actif, None)
-    if ticker is None:
+    if actif in actifs:
+        ticker = actifs[actif]
+    else:
         st.error("Actif non reconnu.")
         return None
 
     # Récupération des données avec yfinance
     donnees = yf.download(ticker, start=date_debut, end=date_fin, interval="1mo")
-    donnees["Rendement"] = donnees["Adj Close"].pct_change()  # Variation en pourcentage
+    
+    if donnees.empty:
+        st.error("Aucune donnée récupérée pour cet actif.")
+        return None
+
+    # Vérifier les colonnes disponibles
+    if 'Adj Close' in donnees.columns:
+        donnees["Rendement"] = donnees["Adj Close"].pct_change()
+    elif 'Close' in donnees.columns:
+        donnees["Rendement"] = donnees["Close"].pct_change()
+    else:
+        st.error("Données insuffisantes pour calculer les rendements.")
+        return None
+
     return donnees
 
 # Calcul de l'évolution du capital
