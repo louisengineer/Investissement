@@ -41,7 +41,7 @@ actifs = {
     "Avalanche (AVAX)": "AVAX-USD",
     "Virtual Protocol (VIRTUAL)": "VIRTUAL-USD",
     "Near Protocol (NEAR)": "NEAR-USD",
-    "Hyperliquid (HYPR)": "HYPE-USD", 
+    "Hyperliquid (HYPE)": "HYPE-USD", 
     "Pepe (PEPE)": "PEPE-USD",
     "Bitget Token (BGB)": "BGB-USD",
     "Sui (SUI)": "SUI-USD",
